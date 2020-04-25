@@ -1,0 +1,21 @@
+{
+    "name": "xudid/collections",
+    "description": "collection utilities",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Didier Moindreau",
+            "email": "dmoindreau@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Collections\\" : "src/"
+        }
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-asserts": "^1.0.0"
+    }
+}
