@@ -19,6 +19,7 @@ class Collection
 
 
     /**
+     * Create a collection with an array
      * @param array $array
      * @return static
      */
@@ -27,8 +28,36 @@ class Collection
         return new static($array);
     }
 
-    public function size()
+    /**
+     * @return int return collection size
+     */
+    public function size() : int
     {
         return count($this->array);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty() : bool
+    {
+        return count($this->array) == 0 ? true : false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNotEmpty() : bool
+    {
+        return count($this->array) > 0 ? true : false;
+    }
+
+    /**
+     * @return $this
+     */
+    public function empty()
+    {
+        $this->array = [];
+        return $this;
     }
 }
