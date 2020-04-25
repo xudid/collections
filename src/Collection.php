@@ -26,4 +26,9 @@ class Collection
     {
         return new static($array);
     }
+
+    public function size()
+    {
+        return count($this->array);
+    }
 }
