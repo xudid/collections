@@ -4,7 +4,8 @@
 namespace Collections;
 
 
-class Collection
+use ArrayAccess;
+class Collection implements ArrayAccess
 {
     protected array $array;
 
@@ -52,12 +53,71 @@ class Collection
         return count($this->array) > 0 ? true : false;
     }
 
+
     /**
-     * @return $this
+     * @return Collection
      */
     public function empty()
     {
         $this->array = [];
         return $this;
+    }
+
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetExists($offset)
+    {
+        return array_key_exists($offset, $this->array);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetGet($offset)
+    {
+        if ($this->offsetExists($offset)) {
+            return $this->array[$offset];
+        }
+        return false;
+    }
+
+    /**
+     * @param $offset
+     * @return bool|mixed
+     */
+    public function get($offset)
+    {
+        return $this->offsetGet($offset);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetSet($offset, $value)
+    {
+        $this->array[$offset] = $value;
+    }
+
+    /**
+     * @param $offset
+     * @param $value
+     * @return Collection
+     */
+    public function set($offset, $value)
+    {
+        $this->array[$offset] = $value;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function offsetUnset($offset)
+    {
+        if ($this->offsetExists($offset)) {
+            unset($this->array[$offset]);
+        }
     }
 }
