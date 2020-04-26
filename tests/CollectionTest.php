@@ -55,4 +55,25 @@ class CollectionTest extends Unit
         $this->assertInstanceOf(Collection::class, $result);
     }
 
+    public function testGet()
+    {
+        $colection = new Collection([1,2,3,4,5,6,7,8,9,0]);
+        $result = $colection->get(0);
+        $this->assertTrue($result == 1);
+    }
+
+    public function testWalk()
+    {
+        $function = function($value){
+            var_dump($value);
+            return $value * 2;
+        };
+        $collection = new Collection([]);
+        $result = $collection->walk($function);
+        $this->assertInstanceOf(Collection::class, $result);
+        $collection2 = Collection::take([1, 2]);
+        $collection2->walk($function);
+        $this->assertTrue($collection2->get(0) == 2);
+    }
+
 }

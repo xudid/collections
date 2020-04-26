@@ -5,6 +5,8 @@ namespace Collections;
 
 
 use ArrayAccess;
+use Closure;
+
 class Collection implements ArrayAccess
 {
     protected array $array;
@@ -60,6 +62,19 @@ class Collection implements ArrayAccess
     public function empty()
     {
         $this->array = [];
+        return $this;
+    }
+
+    /**
+     * @param Closure $function
+     * @return Collection
+     */
+    public function walk(Closure $function)
+    {
+        foreach ($this->array as $key => $item)
+        {
+            $this->array[$key] = $function($item);
+        }
         return $this;
     }
 
