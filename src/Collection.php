@@ -87,6 +87,11 @@ class Collection implements ArrayAccess
         return array_key_exists($offset, $this->array);
     }
 
+    public function keyExists($key) : bool
+    {
+        return $this->offsetExists($key);
+    }
+
     /**
      * @inheritDoc
      */
