@@ -55,6 +55,16 @@ class CollectionTest extends Unit
         $this->assertInstanceOf(Collection::class, $result);
     }
 
+    public function testCollactionAccessLikeArray()
+    {
+        $colection = new Collection([1,2,3,4,5,6,7,8,9,0]);
+        $this->assertTrue($colection[0] == 1);
+        $colection[0] = 2;
+        $this->assertTrue($colection[0] == 2);
+        unset($colection[0]);
+        $this->assertFalse($colection[0] ==2);
+    }
+
     public function testGet()
     {
         $colection = new Collection([1,2,3,4,5,6,7,8,9,0]);
