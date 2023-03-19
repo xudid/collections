@@ -11,11 +11,10 @@
     ],
     "autoload": {
         "psr-4": {
-            "Collections\\" : "src/"
+            "Collections\\": "src/"
         }
     },
     "require-dev": {
-        "codeception/codeception": "^4.1",
-        "codeception/module-asserts": "^1.0.0"
+        "phpunit/phpunit": "^10.0"
     }
 }
